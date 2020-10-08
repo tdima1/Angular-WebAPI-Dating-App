@@ -10,6 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="datingapp.db-shm" />
+    <None Remove="datingapp.db-wal" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">

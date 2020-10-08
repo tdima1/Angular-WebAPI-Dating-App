@@ -34,6 +34,7 @@ namespace DatingApp.API
          services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
          services.AddCors();
          services.AddScoped<IAuthRepository, AuthRepository>();
+         
          services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
             options.TokenValidationParameters = new TokenValidationParameters {
                ValidateIssuerSigningKey = true,
@@ -55,7 +56,9 @@ namespace DatingApp.API
 
          app.UseRouting();
          app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-         //app.UseAuthorization();
+         
+         app.UseAuthentication();
+         app.UseAuthorization();
 
          app.UseEndpoints(endpoints => {
             endpoints.MapControllers();
